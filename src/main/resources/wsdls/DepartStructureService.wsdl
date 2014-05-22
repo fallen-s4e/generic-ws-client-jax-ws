@@ -1,0 +1,150 @@
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.nsi.erp.kz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://ws.nsi.erp.kz/" name="DepartStructureService">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://ws.nsi.erp.kz/" schemaLocation="http://glassfish:8080/NSI-WS/DepartStructureService?xsd=1"/>
+        </xsd:schema>
+    </types>
+    <message name="findAllDepartStructure">
+        <part name="parameters" element="tns:findAllDepartStructure"/>
+    </message>
+    <message name="findAllDepartStructureResponse">
+        <part name="parameters" element="tns:findAllDepartStructureResponse"/>
+    </message>
+    <message name="Exception">
+        <part name="fault" element="tns:Exception"/>
+    </message>
+    <message name="findDepartStructureById">
+        <part name="parameters" element="tns:findDepartStructureById"/>
+    </message>
+    <message name="findDepartStructureByIdResponse">
+        <part name="parameters" element="tns:findDepartStructureByIdResponse"/>
+    </message>
+    <message name="findLastChangedDepartStructure">
+        <part name="parameters" element="tns:findLastChangedDepartStructure"/>
+    </message>
+    <message name="findLastChangedDepartStructureResponse">
+        <part name="parameters" element="tns:findLastChangedDepartStructureResponse"/>
+    </message>
+    <message name="findDepartStructureByChangeDate">
+        <part name="parameters" element="tns:findDepartStructureByChangeDate"/>
+    </message>
+    <message name="findDepartStructureByChangeDateResponse">
+        <part name="parameters" element="tns:findDepartStructureByChangeDateResponse"/>
+    </message>
+    <message name="isExistDepartStructure">
+        <part name="parameters" element="tns:isExistDepartStructure"/>
+    </message>
+    <message name="isExistDepartStructureResponse">
+        <part name="parameters" element="tns:isExistDepartStructureResponse"/>
+    </message>
+    <message name="isChangedDepartStructure">
+        <part name="parameters" element="tns:isChangedDepartStructure"/>
+    </message>
+    <message name="isChangedDepartStructureResponse">
+        <part name="parameters" element="tns:isChangedDepartStructureResponse"/>
+    </message>
+    <portType name="DepartStructureService">
+        <operation name="findAllDepartStructure">
+            <input wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findAllDepartStructureRequest" message="tns:findAllDepartStructure"/>
+            <output wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findAllDepartStructureResponse" message="tns:findAllDepartStructureResponse"/>
+            <fault message="tns:Exception" name="Exception" wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findAllDepartStructure/Fault/Exception"/>
+        </operation>
+        <operation name="findDepartStructureById">
+            <input wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findDepartStructureByIdRequest" message="tns:findDepartStructureById"/>
+            <output wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findDepartStructureByIdResponse" message="tns:findDepartStructureByIdResponse"/>
+            <fault message="tns:Exception" name="Exception" wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findDepartStructureById/Fault/Exception"/>
+        </operation>
+        <operation name="findLastChangedDepartStructure">
+            <input wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findLastChangedDepartStructureRequest" message="tns:findLastChangedDepartStructure"/>
+            <output wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findLastChangedDepartStructureResponse" message="tns:findLastChangedDepartStructureResponse"/>
+            <fault message="tns:Exception" name="Exception" wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findLastChangedDepartStructure/Fault/Exception"/>
+        </operation>
+        <operation name="findDepartStructureByChangeDate">
+            <input wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findDepartStructureByChangeDateRequest" message="tns:findDepartStructureByChangeDate"/>
+            <output wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findDepartStructureByChangeDateResponse" message="tns:findDepartStructureByChangeDateResponse"/>
+            <fault message="tns:Exception" name="Exception" wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/findDepartStructureByChangeDate/Fault/Exception"/>
+        </operation>
+        <operation name="isExistDepartStructure">
+            <input wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/isExistDepartStructureRequest" message="tns:isExistDepartStructure"/>
+            <output wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/isExistDepartStructureResponse" message="tns:isExistDepartStructureResponse"/>
+        </operation>
+        <operation name="isChangedDepartStructure">
+            <input wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/isChangedDepartStructureRequest" message="tns:isChangedDepartStructure"/>
+            <output wsam:Action="http://ws.nsi.erp.kz/DepartStructureService/isChangedDepartStructureResponse" message="tns:isChangedDepartStructureResponse"/>
+        </operation>
+    </portType>
+    <binding name="DepartStructureServicePortBinding" type="tns:DepartStructureService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="findAllDepartStructure">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="findDepartStructureById">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="findLastChangedDepartStructure">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="findDepartStructureByChangeDate">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="isExistDepartStructure">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="isChangedDepartStructure">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="DepartStructureService">
+        <port name="DepartStructureServicePort" binding="tns:DepartStructureServicePortBinding">
+            <soap:address location="http://glassfish:8080/NSI-WS/DepartStructureService"/>
+        </port>
+    </service>
+</definitions>
