@@ -1,0 +1,150 @@
+<xs:schema xmlns:tns="http://ws.nsi.erp.kz/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.nsi.erp.kz/">
+    <xs:element name="Exception" type="tns:Exception"/>
+    <xs:element name="findAllDepartStructure" type="tns:findAllDepartStructure"/>
+    <xs:element name="findAllDepartStructureResponse" type="tns:findAllDepartStructureResponse"/>
+    <xs:element name="findDepartStructureByChangeDate" type="tns:findDepartStructureByChangeDate"/>
+    <xs:element name="findDepartStructureByChangeDateResponse" type="tns:findDepartStructureByChangeDateResponse"/>
+    <xs:element name="findDepartStructureById" type="tns:findDepartStructureById"/>
+    <xs:element name="findDepartStructureByIdResponse" type="tns:findDepartStructureByIdResponse"/>
+    <xs:element name="findLastChangedDepartStructure" type="tns:findLastChangedDepartStructure"/>
+    <xs:element name="findLastChangedDepartStructureResponse" type="tns:findLastChangedDepartStructureResponse"/>
+    <xs:element name="isChangedDepartStructure" type="tns:isChangedDepartStructure"/>
+    <xs:element name="isChangedDepartStructureResponse" type="tns:isChangedDepartStructureResponse"/>
+    <xs:element name="isExistDepartStructure" type="tns:isExistDepartStructure"/>
+    <xs:element name="isExistDepartStructureResponse" type="tns:isExistDepartStructureResponse"/>
+    <xs:element name="results" nillable="true" type="xs:anyType"/>
+    <xs:complexType name="departStructure">
+        <xs:complexContent>
+            <xs:extension base="tns:baseDictionary">
+                <xs:sequence>
+                    <xs:element name="code" type="xs:string" minOccurs="0"/>
+                    <xs:element name="codeHigher" type="xs:string" minOccurs="0"/>
+                    <xs:element name="description" type="xs:string" minOccurs="0"/>
+                    <xs:element name="id" type="xs:int" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="baseDictionary" abstract="true">
+        <xs:sequence>
+            <xs:element name="active" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="lang" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="endDocIdRef" type="xs:IDREF"/>
+        <xs:attribute name="startDocIdRef" type="xs:IDREF"/>
+    </xs:complexType>
+    <xs:complexType name="document">
+        <xs:complexContent>
+            <xs:extension base="tns:baseDictionary">
+                <xs:sequence>
+                    <xs:element name="changedStartDoc" type="xs:boolean"/>
+                    <xs:element name="docDate" type="xs:string" minOccurs="0"/>
+                    <xs:element name="normativeDocDate" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="findAllDepartStructure">
+        <xs:sequence>
+            <xs:element name="lang" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="findAllDepartStructureResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:listResult" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="listResult">
+        <xs:sequence>
+            <xs:element name="document" type="tns:document" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="entity" type="tns:baseDictionary" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Exception">
+        <xs:sequence>
+            <xs:element name="message" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="isChangedDepartStructure">
+        <xs:sequence>
+            <xs:element name="startDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="endDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="lang" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="isChangedDepartStructureResponse">
+        <xs:sequence>
+            <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="findLastChangedDepartStructure">
+        <xs:sequence>
+            <xs:element name="lang" type="xs:string" minOccurs="0"/>
+            <xs:element name="changeDate" type="xs:dateTime" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="findLastChangedDepartStructureResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:listResultLog" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="listResultLog">
+        <xs:sequence>
+            <xs:element name="changed" type="xs:boolean"/>
+            <xs:element name="document" type="tns:document" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="logs" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="log" type="tns:log" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="log">
+        <xs:complexContent>
+            <xs:extension base="tns:baseDictionary">
+                <xs:sequence>
+                    <xs:element name="changeDate" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="comments" type="xs:string" minOccurs="0"/>
+                    <xs:element name="id" type="xs:int" minOccurs="0"/>
+                    <xs:element name="userName" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="isExistDepartStructure">
+        <xs:sequence>
+            <xs:element name="changeDate" type="xs:dateTime"/>
+            <xs:element name="val" type="xs:int" minOccurs="0"/>
+            <xs:element name="lang" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="isExistDepartStructureResponse">
+        <xs:sequence>
+            <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="findDepartStructureByChangeDate">
+        <xs:sequence>
+            <xs:element name="changeDate" type="xs:dateTime"/>
+            <xs:element name="lang" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="findDepartStructureByChangeDateResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:listResult" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="findDepartStructureById">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="findDepartStructureByIdResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:departStructure" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

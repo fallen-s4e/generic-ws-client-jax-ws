@@ -21,18 +21,22 @@
                         <goals>
                             <goal>wsimport</goal>
                         </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>DepartStructureService.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <wsdlLocation>http://192.168.1.211:8080/NSI-WS/DepartStructureService1?wsdl</wsdlLocation>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
                     <!--wsdls file directory -->
-                    <wsdlDirectory>src/main/resources/wsdls</wsdlDirectory>
+                    <wsdlDirectory>src/main/resources/META-INF/wsdls</wsdlDirectory>
                     <!-- which wsdl file -->
-                    <wsdlFiles>
-                        <wsdlFile>DepartStructureService.wsdl</wsdlFile>
-                    </wsdlFiles>
                     <keep>true</keep>
                     <packageName>uk.co.innoforce.kz.tais.commons.nsi.yawsclient.generated</packageName>
                     <sourceDestDir>target/generated-code/src</sourceDestDir>
+                    <catalog>src/main/resources/META-INF/jax-ws-catalog.xml</catalog>
                 </configuration>
             </plugin>
         </plugins>

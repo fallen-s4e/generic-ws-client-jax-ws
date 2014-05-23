@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+
+    <system systemId="http://192.168.1.211:8080/NSI-WS/DepartStructureService?wsdl"  uri="wsdls/DepartStructureService.wsdl"/>
+    <system systemId="http://192.168.1.211:8080/NSI-WS/DepartStructureService?xsd=1" uri="wsdls/DepartStructureService.xsd_1.xsd"/>
+
+</catalog>
